@@ -15,13 +15,14 @@ quanto_tempo <-
       dma,
       units = un)
     
+    print(dif)
+    
     dif2 <-
       dif %>% 
       str_extract(.,
                   "[[:digit:]]{1,}") %>% 
       as.numeric()
-    
-    return(dif)
+
     dif2
     
   }
