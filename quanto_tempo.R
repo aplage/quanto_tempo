@@ -29,7 +29,13 @@ quanto_tempo <-
     
      if(length(dma) == 1){
       
-      if(
+       
+       if(
+         is.na(dma)
+       ){
+         NA
+       }
+       else if(
         today() <= dma
       ){
         txt1 <- c("Faltam")
@@ -53,7 +59,9 @@ quanto_tempo <-
                     "[[:digit:]]{1,}") %>% 
         as.numeric()
       
-      
+      if(is.na(dif2)){
+        NA
+      } else {
         
         paste(
           txt1,
@@ -62,6 +70,11 @@ quanto_tempo <-
           txt2,
           sep = " "
         )
+        
+      }
+      
+        
+       
 
     } else if(length(dma) > 1){
       
@@ -70,7 +83,13 @@ quanto_tempo <-
         function(t){
           
           
+          
           if(
+            is.na(t)
+          ){
+            NA
+          }
+          else if(
             today() <= t
           ){
             txt1 <- c("Faltam")
@@ -94,15 +113,20 @@ quanto_tempo <-
                         "[[:digit:]]{1,}") %>% 
             as.numeric()
           
-          
+          if(is.na(dif2)){
+            NA
+          } else {
+            
             paste(
               txt1,
               dif2,
               txt_un,
               txt2,
               sep = " "
-            )
+            )  
             
+          }
+  
         }
       )
           
