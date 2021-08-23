@@ -15,7 +15,7 @@ quanto_tempo <-
       dma,
       units = un)
     
-    print(dif)
+    # print(dif)
     
     dif2 <-
       dif %>% 
@@ -23,6 +23,13 @@ quanto_tempo <-
                   "[[:digit:]]{1,}") %>% 
       as.numeric()
 
-    dif2
+    # dif2
+    
+    paste(
+      "Faltam",
+      dif2,
+      "dia para a data indicada",
+      sep = " "
+    )
     
   }
