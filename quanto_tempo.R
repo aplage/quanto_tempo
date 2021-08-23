@@ -8,6 +8,17 @@ quanto_tempo <-
     
     
     dma <- dmy(dma)
+    un = un
+    
+    if(!is.character(dma)){
+      stop("A data deve ser informada como caractere, no formato 'dia mês ano'.")
+    }
+    
+    if(
+      ! un %in% c("w", "d", "h", "m", "s")
+    ){
+      warning("A unidade deve ser informada como 'w'= semana ou 'd' = dia ou 'h' = hora ou 'm' = min ou 's' = segundo.")
+    }
     
     txt1 <- character()
     txt2 <- character()
@@ -70,9 +81,8 @@ quanto_tempo <-
           txt2,
           sep = " "
         )
-        
       }
-      
+
         
        
 
