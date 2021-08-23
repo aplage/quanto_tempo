@@ -25,35 +25,87 @@ quanto_tempo <-
         "semanas"
       }
     
-    dif <-
-    difftime(
-      today(),
-      dma,
-      units = un)
+   
     
-    dif2 <-
-      dif %>% 
-      str_extract(.,
-                  "[[:digit:]]{1,}") %>% 
-      as.numeric()
+     if(length(dma) == 1){
+      
+      if(
+        today() <= dma
+      ){
+        txt1 <- c("Faltam")
+        txt2 <- c("dias para a data indicada.")
+      } else {
+        txt1 <- c("Já se passaram")
+        txt2 <- c("da data indicada.")
+      }
+      
+      
+      dif <- 
+        difftime(
+          today(),
+          dma,
+          units = un
+        )
+      
+      dif2 <-
+        dif %>% 
+        str_extract(.,
+                    "[[:digit:]]{1,}") %>% 
+        as.numeric()
+      
+      
+        
+        paste(
+          txt1,
+          dif2,
+          txt_un,
+          txt2,
+          sep = " "
+        )
 
-
-    if(
-      today() <= dma
-    ){
-      txt1 <- c("Faltam")
-      txt2 <- c("para a data indicada.")
-    } else {
-      txt1 <- c("Já se passaram")
-      txt2 <- c("da data indicada.")
+    } else if(length(dma) > 1){
+      
+      sapply(
+        dma,
+        function(t){
+          
+          
+          if(
+            today() <= t
+          ){
+            txt1 <- c("Faltam")
+            txt2 <- c("dias para a data indicada.")
+          } else {
+            txt1 <- c("Já se passaram")
+            txt2 <- c("da data indicada.")
+          }
+          
+          
+          dif <- 
+            difftime(
+              today(),
+              t,
+              units = un
+            )
+          
+          dif2 <-
+            dif %>% 
+            str_extract(.,
+                        "[[:digit:]]{1,}") %>% 
+            as.numeric()
+          
+          
+            paste(
+              txt1,
+              dif2,
+              txt_un,
+              txt2,
+              sep = " "
+            )
+            
+        }
+      )
+          
     }
-    
-    paste(
-      txt1,
-      dif2,
-      txt_un,
-      txt2,
-      sep = " "
-    )
-    
   }
+        
