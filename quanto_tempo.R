@@ -1,10 +1,27 @@
 quanto_tempo <-
-  function(dma){
+  function(dma,
+           un = "d"){
     
-    library(lubridate)
+    require(lubridate)
+    require(dplyr)
+    require(stringr)
     
+    
+    dma <- dmy(dma)
+    
+    dif <-
     difftime(
       today(),
-      dma)
+      dma,
+      units = un)
+    
+    dif2 <-
+      dif %>% 
+      str_extract(.,
+                  "[[:digit:]]{1,}") %>% 
+      as.numeric()
+    
+    return(dif)
+    dif2
     
   }
