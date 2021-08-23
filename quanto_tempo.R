@@ -31,21 +31,18 @@ quanto_tempo <-
       dma,
       units = un)
     
-    # print(dif)
-    
     dif2 <-
       dif %>% 
       str_extract(.,
                   "[[:digit:]]{1,}") %>% 
       as.numeric()
 
-    # dif2
-    
+
     if(
       today() <= dma
     ){
       txt1 <- c("Faltam")
-      txt2 <- c("dias para a data indicada.")
+      txt2 <- c("para a data indicada.")
     } else {
       txt1 <- c("Já se passaram")
       txt2 <- c("da data indicada.")
@@ -54,6 +51,7 @@ quanto_tempo <-
     paste(
       txt1,
       dif2,
+      txt_un,
       txt2,
       sep = " "
     )
