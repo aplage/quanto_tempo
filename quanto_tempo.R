@@ -7,8 +7,7 @@ quanto_tempo <-
     require(stringr)
     
     
-    dma <- dmy(dma)
-    un = un
+    
     
     if(!is.character(dma)){
       stop("A data deve ser informada como caractere, no formato 'dia mês ano'.")
@@ -19,6 +18,9 @@ quanto_tempo <-
     ){
       warning("A unidade deve ser informada como 'w'= semana ou 'd' = dia ou 'h' = hora ou 'm' = min ou 's' = segundo.")
     }
+    
+    dma <- dmy(dma)
+    un = un
     
     txt1 <- character()
     txt2 <- character()
@@ -50,7 +52,7 @@ quanto_tempo <-
         today() <= dma
       ){
         txt1 <- c("Faltam")
-        txt2 <- c("dias para a data indicada.")
+        txt2 <- c("para a data indicada.")
       } else {
         txt1 <- c("Já se passaram")
         txt2 <- c("da data indicada.")
@@ -103,7 +105,7 @@ quanto_tempo <-
             today() <= t
           ){
             txt1 <- c("Faltam")
-            txt2 <- c("dias para a data indicada.")
+            txt2 <- c("para a data indicada.")
           } else {
             txt1 <- c("Já se passaram")
             txt2 <- c("da data indicada.")
