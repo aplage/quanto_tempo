@@ -1,6 +1,10 @@
 quanto_tempo <-
   function(dma){
     
-    today() - dma
+    library(lubridate)
+    
+    difftime(
+      today(),
+      dma)
     
   }
